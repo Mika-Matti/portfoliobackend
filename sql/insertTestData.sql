@@ -1,19 +1,27 @@
 USE portfoliodb;
 
-INSERT INTO projects (project_name, description, gitlab_link) VALUES
-('projekti1', 'projekti1kuvaus', 'projekti1linkki.fi'),
-('projekti2', 'projekti2kuvaus', 'projekti2linkki.fi'),
-('projekti3', 'projekti3kuvaus', 'projekti3linkki.fi'),
-('projekti4', 'projekti4kuvaus', 'projekti4linkki.fi');
+INSERT INTO projects (project_name, project_desc) VALUES
+('projekti1', 'projekti1kuvaus'),
+('projekti2', 'projekti2kuvaus'),
+('projekti3', 'projekti3kuvaus'),
+('projekti4', 'projekti4kuvaus');
 
-INSERT INTO images(link, description, project_id) VALUES
-('shorturl.at/oyNP1', 'kuvaus1', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti1')),
-('shorturl.at/oyNP1', 'kuvaus2', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti2')),
-('shorturl.at/oyNP1', 'kuvaus3', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti3')),
-('shorturl.at/oyNP1', 'kuvaus4', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti4'));
+INSERT INTO links(link_url, link_desc, link_isimage, project_id) VALUES
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus1', TRUE, 1),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus2', TRUE, 1),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus3', TRUE, 1),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus4', TRUE, 2),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus5', TRUE, 2),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus6', TRUE, 3),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus7', TRUE, 3),
+('shorturl.at/oyNP1', 'kuvalinkkikuvaus8', TRUE, 4);
 
-INSERT INTO images(link, description, project_id) VALUES
-('shorturl.at/oyNP1', 'kuvaus5', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti1')),
-('shorturl.at/oyNP1', 'kuvaus6', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti1')),
-('shorturl.at/oyNP1', 'kuvaus7', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti2')),
-('shorturl.at/oyNP1', 'kuvaus8', (SELECT projects.project_id FROM projects WHERE projects.project_name='projekti3'));
+INSERT INTO links(link_url, link_desc, link_isimage, project_id) VALUES
+('linkki1.fi', 'linkkikuvaus1', FALSE, 1),
+('linkki2.fi', 'linkkikuvaus5', FALSE, 1),
+('linkki3.fi', 'linkkikuvaus6', FALSE, 2),
+('linkki4.fi', 'linkkikuvaus2', FALSE, 2),
+('linkki5.fi', 'linkkikuvaus7', FALSE, 2),
+('linkki6.fi', 'linkkikuvaus8', FALSE, 3),
+('linkki7.fi', 'linkkikuvaus3', FALSE, 4),
+('linkki8.fi', 'linkkikuvaus4', FALSE, 4);
