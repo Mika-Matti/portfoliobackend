@@ -77,4 +77,29 @@ router.get("/projects/:id/:type", (req, res) => {
   }
 });
 
+// Add project
+router.post("/projects", (req, res) => {
+  const project = req.body; // example format object = { nimi: 'Ankka Roope', puhelin: '050-1231232' };
+  if (!project) {
+    return res
+      .status(400)
+      .send({ error: true, message: "Please provide a project" });
+  }
+
+  con.query(`INSERT INTO ${projects.table} SET ?`, project, function (
+    error,
+    results
+  ) {
+    if (error) throw error;
+    return res.send({
+      project_id: results.insertId,
+      ...project,
+    });
+  });
+});
+
+// Update project
+
+// Delete project and it's images
+
 module.exports = router;
