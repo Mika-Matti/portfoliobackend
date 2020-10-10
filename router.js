@@ -99,6 +99,23 @@ router.post("/projects", (req, res) => {
 });
 
 // Update project
+router.put("/projects/:id", (req, res) => {
+  const updatedProject = req.body;
+  const id = Number(req.params.id);
+
+  con.query(
+    `UPDATE ${projects.table} SET ? Where ${projects.project_id} = ?`,
+    [updatedProject, id],
+    function (error, results) {
+      console.log("results", results);
+      if (error) throw error;
+      return res.send({
+        project_id: id,
+        ...updatedProject,
+      });
+    }
+  );
+});
 
 // Delete project and it's images
 
