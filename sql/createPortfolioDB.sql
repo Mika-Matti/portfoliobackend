@@ -18,5 +18,5 @@ CREATE TABLE links
 	link_desc VARCHAR(250),
 	project_id INT NOT NULL,
 	PRIMARY KEY(link_id),
-	FOREIGN KEY(project_id) REFERENCES projects(project_id)
+	FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE
 );

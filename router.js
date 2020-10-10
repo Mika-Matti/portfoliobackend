@@ -118,5 +118,19 @@ router.put("/projects/:id", (req, res) => {
 });
 
 // Delete project and it's images
+router.delete("/projects/:id", (req, res) => {
+  con.query(
+    `DELETE FROM ${projects.table} WHERE ${projects.project_id} = ?`,
+    req.params.id,
+    function (error, results) {
+      if (error) throw error;
+      return res.send({
+        error: false,
+        data: results,
+        message: "Project deleted.",
+      });
+    }
+  );
+});
 
 module.exports = router;
