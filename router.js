@@ -56,4 +56,25 @@ router.get("/projects/:id", (req, res) => {
   );
 });
 
+// Get image links or links of project by id
+router.get("/projects/:id/:type", (req, res) => {
+  const id = req.params.id;
+  let type = req.params.type === "images" ? true : false; //if true, only get images
+
+  //if :type is either images or links
+  if (req.params.type === "images" || req.params.type === "links") {
+    con.query(
+      `SELECT * FROM ${links.table} WHERE ${links.project_id} = ?
+        AND ${links.link_isimage} = ?`,
+      [id, type],
+      function (error, results) {
+        if (error) throw error;
+        res.json(results ? results : { message: "Not found" });
+      }
+    );
+  } else {
+    res.send("404");
+  }
+});
+
 module.exports = router;
