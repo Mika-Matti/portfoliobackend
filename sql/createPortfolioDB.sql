@@ -6,7 +6,8 @@ CREATE TABLE projects
 (
   project_id INT NOT NULL AUTO_INCREMENT,
   project_name VARCHAR(50) NOT NULL,
-  project_desc VARCHAR(900) NOT NULL,
+  project_desc VARCHAR(300) NOT NULL,
+  project_content VARCHAR(3000) NOT NULL,
   PRIMARY KEY (project_id)
 );
 

@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express().use(bodyParser.json());
 const router = require("./router");
+const path = require("path");
 
 // ADD HEADERS
 app.use(function (req, res, next) {
@@ -27,6 +28,10 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+
+//Image folder, images are accessed from localhost:port/images/image.jpg
+const dir = path.join(__dirname, "public");
+app.use(express.static(dir));
 
 // CRUD methods
 app.use("/", router);
